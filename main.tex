@@ -1,14 +1,9 @@
 % abtex2-modelo-artigo.tex, v-1.9.2 laurocesar
 % Copyright 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/ 
-%
 
-% ------------------------------------------------------------------------
-% ------------------------------------------------------------------------
 % abnTeX2: Modelo de Artigo Acadêmico em conformidade com
 % ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
 % periódica científica impressa - Apresentação
-% ------------------------------------------------------------------------
-% ------------------------------------------------------------------------
 
 \documentclass[
 	% -- opções da classe memoir --
@@ -27,11 +22,9 @@
 	sumario=tradicional
 	]{abntex2}
 
-\usepackage[alf]{abntex2cite}
-\input{usepackage.tex}
-\bibliographystyle{plain}
+% PACOTES
+\input{package}
 
-% ---
 % Configurações do pacote backref
 % Usado sem a opção hyperpageref de backref
 \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
@@ -40,24 +33,19 @@
 % Define os textos da citação
 \renewcommand*{\backrefalt}[4]{
 	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
 		Citado na página #2.%
 	\else
 		Citado #1 vezes nas páginas #2.%
 	\fi}%
 % ---
 
-% ---
+
 % Informações de dados para CAPA e FOLHA DE ROSTO
-% ---
 \titulo{Bel e decibel, assim como suas variantes}
 \autor{Henrique Marques de Carvalho Medeiros}
 \local{Brasil}
-\data{Maio de 2022}
-% ---
+\data{Junho de 2022}
 
-% ---
 % Configurações de aparência do PDF final
 
 % alterando o aspecto da cor azul
@@ -90,47 +78,30 @@
 
 % ---
 % Altera as margens padrões
-% ---
 \setlrmarginsandblock{3cm}{3cm}{*}
 \setulmarginsandblock{3cm}{3cm}{*}
 \checkandfixthelayout
-% ---
 
-% --- 
+
 % Espaçamentos entre linhas e parágrafos 
-% --- 
-
 % O tamanho do parágrafo é dado por:
 \setlength{\parindent}{1.3cm}
-
 % Controle do espaçamento entre um parágrafo e outro:
 \setlength{\parskip}{0.2cm}  % tente também \onelineskip
-
 % Espaçamento simples
 \SingleSpacing
 
-% ----
+
 % Início do documento
-% ----
 \begin{document}
 
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing 
 
-% ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
-% ----------------------------------------------------------
 
-%---
-%
-% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
-% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
-% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
-%
-%---
-% página de titulo
 \maketitle
-% resumo em português
+
 \begin{resumoumacoluna}
     Onda é um pulso que se propaga de um ponto a outro transportando energia sem transportar matéria. As ondas mecânicas são todas aquelas que dependem de um meio para se propagar e surgem em consequência da deformação de um meio elástico.
     O Bel Criado por conveniência, para expressar a razão de dois números com diferenças grandes.
@@ -139,21 +110,14 @@
  \vspace{\onelineskip}
  
  \noindent
- \textbf{Palavras-chaves}: Bel. Decibel. Onda Sonora. Medidas.
+ \textbf{Palavras-chaves}: Bel. Decibel. Onda Sonora. Unidades de medidas.
 \end{resumoumacoluna}
 
-% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
-% ---
-
-% ----------------------------------------------------------
 % ELEMENTOS TEXTUAIS
-% ----------------------------------------------------------
 \textual
 
-% ----------------------------------------------------------
 % Introdução
-% ----------------------------------------------------------
-\section*{Energia transportada pelas ondas}
+\section*{Introdução}
 \addcontentsline{toc}{section}{Introdução}
 
 Todo e qualquer tipo de onda não transporta matéria. Onda é um pulso que se propaga de um ponto a outro transportando energia sem transportar matéria.
@@ -161,10 +125,9 @@ Todo e qualquer tipo de onda não transporta matéria. Onda é um pulso que se p
 As ondas podem ser classificadas com relação à sua natureza de vibração como mecânicas e eletromagnéticas.
 
 As ondas mecânicas são todas aquelas que dependem de um meio para se propagar e surgem em consequência da deformação de um meio elástico.
-As ondas eletromagnéticas se propagam no vácuo e em alguns meios, surgem em consequência de cargas elétricas oscilantes\cite{demodelo}.
+As ondas eletromagnéticas se propagam no vácuo e em alguns meios, surgem em consequência de cargas elétricas oscilantes como é definido por \citeonline{demodelo}.
 
-\section*{Intensidade do som}
-\addcontentsline{toc}{section}{Intensidade do som}
+\section{Intensidade do som}
 A intensidade (I) de uma onda é basicamente a Potência transportada por uma unidade de área perpendicular ao
 fluxo de energia.
 $$I = \frac{Potência}{area} = \frac{(energia / tempo)} {area}$$
@@ -213,8 +176,8 @@ muito baixas, da ordem de $10^-12 W/m2$ (ou seja,
 0,000000000001 $W/m^2$) até intensidades tão altas
 quanto 100 $W/m^2$.
 
-\section{Bel}
-\addcontentsline{toc}{section}{Bel}
+\subsection{Bel}
+
 Criado por conveniência, para expressar a razão de dois números com diferenças grandes. Homenagem ao cientista Alexander Graham Bell, inventor, entre outras, do telefone.
 
 Onde é estabelecido que se a e b são dois níveis de potência, então a razão bel é: 
@@ -224,18 +187,13 @@ Logo, se a tem o dobro da potência de b então:
 Nível de Potência= $\log_{10} 2 = .301 Bel$
 
 \section{Decibel}
-\addcontentsline{toc}{section}{DeciBel}
 
 O dB é uma unidade logarítmica muito usada em telecomunicações, por pelo menos dois motivos : O ouvido humano tem resposta logarítmica (sensação auditiva versus potência acústica) e em telecomunicações, se usam números extremamente grandes ou pequenos. O uso de logaritmos torna estes números pequenos e fáceis de manipular, e transforma produtos em somas e divisões em subtrações.
 
 O dB é um número relativo e permite representar relações entre duas grandezas de mesmo tipo, como relações de potências, tensões, correntes ou qualquer outra relação adimensional.
 Portanto, permite definir ganhos e atenuações, relação sinal/ruído, dinâmica, etc...
 
-
 \subsection{Nível de pressão sonora: decibel}
-\addcontentsline{toc}{section}{Nível de pressão sonora:
-decibel}
-
 Para se medir o nível de pressão sonora é necessário uma pressão de referência, $P_0$. Usamos uma pressão sonora que é aproximadamente igual ao limiar de audibilidade a 1000 Hz, isto é, a pressão exercida por uma onda de som de um som de 1000 Hz no tímpano, que é apenas o suficiente para ser ouvida. Esta pressão é tomada como sendo $2 x 10^-5 N/m^2$. A escala de intensidade do som é então dada por:
 
 $$SPL = 20 \log_{10}(P/P_0) dB$$
@@ -273,7 +231,6 @@ $2 . 10^{-5}$ & 0\\
 \end{table}
 
 \subsection{Níveis de Intensidade e Pressão}
-\addcontentsline{toc}{subsection}{Níveis de Intensidade e Pressão}
 Os cálculos para o nível de pressão sonora, do inglês "Sound Pressure Level" são feitos em decibel.
 $$SPL = 20 \log (P/P_{ref})$$
 $$P_{ref} = 2.10^{-5} N/m^2$$
@@ -293,8 +250,14 @@ Sylvio Bistafa fez uma estudo para descobrir a qualidade de autos falantes com b
 Um alto-falante suspenso no ar gera som, porém de baixa qualidade acústica. Isso significa qualidade do som falante não atende às expectativas do ouvinte.\cite{bistafa2018acustica}
 \end{citacao}
 Isso se relaciona diretamente com o conceito humano para a qualidade sonora que se baseia em cinco pilares principais. São eles a altura,a intensidade ou sonoridade, o timbre a sensação sonora.
+\begin{figure}[h]
+\caption{Audiograma}
+\centering
+\includegraphics{Audiograma de sons.png}
+\label{Curvas de igual audibilidade ou
+isofônicas}
+\end{figure}
 
-\addcontentsline{toc}{section}{Qualidade de um som}
 \subsection{Altura}
 É a qualidade do som que nos permite distinguir os sons graves dos agudos.
 \subsection{Intensidade ou Sonoridade do Som}
@@ -312,36 +275,25 @@ Dois sons de mesma intensidade física mas frequências diferentes podem parecer
 \begin{figure}[h]
 \caption{Curvas de igual audibilidade ou
 isofônicas}
-\centering % para centralizarmos a figura
-\includegraphics{Curvas de igual audibilidade.jpg} % leia abaixo
+\centering
+\includegraphics{Curvas de igual audibilidade.jpg}
 \label{Curvas de igual audibilidade ou
 isofônicas}
 \end{figure}
 
 \subsection{Sensibilidade do Ouvido}
-\begin{figure}[h]
-\caption{Curvas de igual audibilidade ou
-isofônicas}
-\centering % para centralizarmos a figura
-\includegraphics[width=200]{Limiar de audição.jpg} % leia abaixo
-\label{Curvas de igual audibilidade ou
-isofônicas}
-\end{figure}
-
-\begin{figure}[h]
-\caption{Curvas de igual audibilidade ou
-isofônicas}
-\centering % para centralizarmos a figura
-\includegraphics{Audiograma de sons.png} % leia abaixo
-\label{Curvas de igual audibilidade ou
-isofônicas}
-\end{figure}
 
 O aparelho auditivo, concentrado no interior da cabeça, é dividido em três partes. A primeira parte é o ouvido externo, onde se encontra o canal auditivo. A segunda parte é ouvido médio, também conhecido como cavidade timpânica, onde se localiza o tímpano e os ossículos. A terceira parte é o ouvido interno, onde se concentra a cóclea o nervo auditivo.
 
 Para que consigamos fazer a recepção do som, é preciso que a onda sonora entre pelos ouvidos externos e percorra um canal auditivo até chegar ao tímpano. Com a presença dessas ondas sonoras, o tímpano começa a vibrar. Nesse momento, os dois ossos da cavidade timpânica, o martelo e a bigorna acionam outro osso chamado de estribo, que transfere essa informação ao ouvido interno.
 
 Ao passar por cada um desses obstáculos, as ondas sonoras são aplicadas e vão em direção ao caracol do ouvido. Nesse local existem células nervosas do nervo auditivo que enviam os sinais das ondas sonoras ao cérebro. É nesse instante que temos a percepção do som.
+\begin{figure}[h]
+\caption{Limiar de audição}
+\centering
+\includegraphics[width=200]{Limiar de audição.jpg}
+\label{Limiar de audição}
+\end{figure}
 
 \section{Outras unidades logarítmicas}
 \subsection{dBA}
@@ -397,21 +349,14 @@ Usado para expressar o ganho de uma antena em relação a antena ISOTRÓPICA. A 
 Usado para expressar o ganho de uma antena em relação ao DIPOLO de meia onda. O dipolo de meia onda é a antena ressonante mais simples e fácil de ser construída e por isso é muito usada como referencia. Em espaço livre, o ganho do dipolo de meia onda é de $0 dBd = 2,15 dBi$
 
 % Conclusão
-
 \section*{Considerações finais}
 \addcontentsline{toc}{section}{Considerações finais}
 
 Conclui-se que essas unidades de medida foram criadas para uma melhor conspeção das vibrações sonoras, e são utilizadas comumente em todos os campos da ciência para a aferição de tais proporções.
 
-
 % ELEMENTOS PÓS-TEXTUAIS
 \postextual
 
-% Título e resumo em língua estrangeira
-
-% INICIO DE ARTIGO EM DUAS COLUNAS
-
-% titulo em inglês
 \titulo{Bel and decibel, as well as their variants}
 \emptythanks
 \maketitle
@@ -424,13 +369,9 @@ Conclui-se que essas unidades de medida foram criadas para uma melhor conspeçã
    \vspace{\onelineskip}
  
    \noindent
-   \textbf{Key-words}: Bel. Decibel. Sound wave. Measurements.
+   \textbf{Key-words}: Bel. Decibel. Sound wave. Measurement units.
  \end{otherlanguage*}  
 \end{resumoumacoluna}
-
-%FIM DE ARTIGO EM DUAS COLUNAS
-
-% Referências bibliográficas
 
 \bibliography{abntex2-modelo-references}
 
